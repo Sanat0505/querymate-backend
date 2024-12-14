@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use("/querymate/auth", userRoutes);
-app.use("/querymate/queries", queryRoutes);
+app.use("/api/querymate/auth", userRoutes);
+app.use("/api/querymate/queries", queryRoutes);
 
 module.exports = app;
