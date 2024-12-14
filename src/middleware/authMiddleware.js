@@ -38,6 +38,17 @@ const jwt = require("jsonwebtoken");
 const config = require("../config/config");
 
 const authMiddleware = (req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://tb-querymate.vercel.app, http://localhost:3000/"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   const authHeader = req.headers["authorization"];
   if (!authHeader) {
     return res.status(401).json({ message: "Authorization header missing" });
