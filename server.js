@@ -1,6 +1,6 @@
 const app = require("./app");
 const mongoose = require("mongoose");
-const { mongoURI, port } = require("./config/config");
+const { mongoURI, port } = require("./src/config/config");
 
 const PORT = port;
 
