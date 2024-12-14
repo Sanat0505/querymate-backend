@@ -1,20 +1,20 @@
 const jwt = require("jsonwebtoken");
 const config = require("../config/config");
 const authMiddleware = (req, res, next) => {
-  // const token = req.headers["authorization"];
+  const token = req.headers["authorization"];
 
-  // if (!token) {
-  //   return res.status(403).json({ message: "No token provided" });
-  // }
+  if (!token) {
+    return res.status(403).json({ message: "No token provided" });
+  }
 
-  // jwt.verify(token, jwtSecret, (err, decoded) => {
-  //   if (err) {
-  //     return res.status(403).json({ message: "Invalid or expired token" });
-  //   }
+  jwt.verify(token, jwtSecret, (err, decoded) => {
+    if (err) {
+      return res.status(403).json({ message: "Invalid or expired token" });
+    }
 
-  //   req.user = decoded; // Attach decoded token data to req
-  //   next();
-  // });
+    req.user = decoded; // Attach decoded token data to req
+    next();
+  });
   const authHeader = req.headers["authorization"];
   console.log(req, authHeader, "authHeader");
   if (!authHeader) {
