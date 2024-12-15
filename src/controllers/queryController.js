@@ -5,22 +5,36 @@ const { classifyQuery } = require("../services/huggingFaceService");
 // Submit a Query
 const submitQuery = async (req, res) => {
   const { queryText } = req.body;
-
-  console.log("queryTextNN", queryText);
+  let automatedResponse = "";
+  let status = ""
   try {
     // Use Hugging Face service to classify the query
-    const classification = await classifyQuery(queryText);
-
+    const classification = await classifyQuery(
+      `Classify this query as "Automated" or "Escalated": ${queryText}`
+    );
     // Save the query in the database
+    if (classification === "Automated") {
+      automatedResponse = await classifyQuery(queryText);
+      status = "Done"
+    }
     const query = new Query({
       userId: req.user.id,
       queryText,
       classification,
+      response: automatedResponse,
+      status: status
     });
-
+    console.log("classification", classification);
     await query.save();
-    res.status(201).json({ message: "Query submitted", classification });
+    res
+      .status(201)
+      .json({
+        message: "Query submitted",
+        classification,
+        response: automatedResponse || "Query escalated to admin.",
+      });
   } catch (error) {
+    console.log("eror", error);
     res.status(500).json({ message: "Error submitting query", error });
   }
 };

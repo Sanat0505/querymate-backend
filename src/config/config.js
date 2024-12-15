@@ -7,7 +7,7 @@ const config = {
     "mongodb+srv://sanatkakadiya55:Sanat2002@demo.pwct1gx.mongodb.net/?retryWrites=true&w=majority&appName=demo",
   jwtSecret:
     process.env.JWT_SECRET ||
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NTQyY2JjZDg5YjVjZTU1OGE3NWZjOSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczMzU3OTU2MiwiZXhwIjoxNzMzNTgzMTYyfQ.yk6pou9hgfTU2Ab3z2HtieSGciRjwRd86qU1yDHqSiI",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NWRkNmU2NTYyMDgxNDdlMDk0ZTBlNiIsIm5hbWUiOiJTYW5hdCBLYWthZGl5YSIsImVtYWlsIjoic2FuYXQxMjNAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MzQyNzUxNDAsImV4cCI6MTczNDI3ODc0MH0.z05HoGC7kzgbkEG2rymF6oyhJezYbIAwJjnzwpOry0M",
   huggingFaceApiToken: process.env.HUGGING_FACE_API_TOKEN,
   infuraApiKey: process.env.INFURA_API_KEY,
 };
